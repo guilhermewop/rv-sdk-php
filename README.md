@@ -1,4 +1,8 @@
-# Client for RV Tecnologia XML API
+# SDK for RV Tecnologia XML API
+
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
+A simple SDK to access RV Tecnologia XML API.
 
 ## Requirements
 
