@@ -50,10 +50,14 @@ abstract class AbstractTransaction
         return $this->params;
     }
 
+    protected abstract function buildParams();
+
     public function send(array $params = [])
     {
         if (! empty($params)) {
             $this->setParams($params);
+        } else {
+            $this->buildParams();
         }
 
         $this->transaction = new Transaction($this::TRANSACTION_CODE);
