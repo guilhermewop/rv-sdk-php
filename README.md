@@ -19,12 +19,12 @@ php composer.phar require guilhermewop/rv-sdk-php:dev-master
 [Package information on Packagist](https://packagist.org/packages/guilhermewop/rv-sdk-php)
 
 ### Usage
-Example using the generic transaction class
+Example using the generic transaction class:
 
 ```php
 try {
     // All transactions require a request (put it in your config files)
-    $request = new Request;
+    $request = new Rv\Request;
     $request->setUri('api host')
             ->setUsername('your primary username')
             ->setStore('your primary store')
@@ -32,7 +32,7 @@ try {
 
     // All operations require a transaction code
     $transactionCode = 5; // online recharge code
-    $transaction = new Transaction($transactionCode);
+    $transaction = new Rv\Transaction($transactionCode);
     $transaction->setRequest($request);
     $response = $transaction->send([
         'compra'  => '100000000',
@@ -45,19 +45,19 @@ try {
 }
 ```
 
-Example using specific transaction implementation
+Example using specific transaction implementation:
 
 ```php
 try {
     // All transactions require a request (put it in your config files)
-    $request = new Request;
+    $request = new Rv\Request;
     $request->setUri('api host')
             ->setUsername('your primary username')
             ->setStore('your primary store')
             ->setPassword('your primary password');
 
     // A online mobile recharge
-    $recharge = new OnlineRecharge($request);
+    $recharge = new Rv\Transaction\Recharge\Online($request);
     $recharge->setOperator('oi')
              ->setMsisdn('11987654321')
              ->setAmount('10.00')
