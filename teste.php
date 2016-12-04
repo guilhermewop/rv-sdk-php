@@ -5,6 +5,7 @@ use Rv\Transaction;
 use Rv\Request;
 use Rv\Transaction\Status;
 use Rv\Transaction\Recharge\Online as OnlineRecharge;
+use Rv\Misc;
 
 $request = new Request;
 $request->setUri('https://xml.cellcard.com.br/teste/integracao_xml.php')
@@ -18,10 +19,11 @@ $request->setUri('https://xml.cellcard.com.br/teste/integracao_xml.php')
 
 $recharge = new OnlineRecharge($request);
 $recharge->setOperator('oi')
-         ->setMsisdn('11980953733')
-         ->setAmount('10.00')
+         ->setPhone('11980953733')
+         ->setAmount('15.00');
 
 $response = $recharge->send();
+print_r($recharge);
 print_r($response);
 
 

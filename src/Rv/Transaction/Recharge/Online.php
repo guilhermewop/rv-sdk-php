@@ -4,6 +4,7 @@ namespace Rv\Transaction\Recharge;
 use Rv\Transaction\AbstractTransaction;
 use Rv\Transaction\TransactionInterface;
 use Rv\Transaction\Recharge\Product;
+use Rv\Helper;
 
 final class Online extends AbstractTransaction implements
     TransactionInterface
@@ -12,7 +13,7 @@ final class Online extends AbstractTransaction implements
 
     protected $operator;
 
-    protected $msisdn;
+    protected $phone;
 
     protected $amount;
 
@@ -28,16 +29,16 @@ final class Online extends AbstractTransaction implements
         return $this->operator;
     }
 
-    public function setMsisdn($msisdn)
+    public function setPhone($phone)
     {
-        $this->msisdn = $msisdn;
+        $this->phone = $phone;
 
         return $this;
     }
 
-    public function getMsisdn()
+    public function getPhone()
     {
-        return $this->msisdn;
+        return $this->phone;
     }
 
     public function setAmount($amount)
@@ -54,6 +55,16 @@ final class Online extends AbstractTransaction implements
 
     protected function buildParams()
     {
-        $productCode = Product::amountToCode($operator, $amount);
+        $productCode = Product::amountToCode($this->getOperator(), $this->getAmount());
+
+        $phone = $this->getPhone();
+        $splittedPhone = Helper::splitPhoneNumberAreaCode($phone);
+
+        $this->setParams([
+            'compra'  => '100000000',
+            'produto' => $productCode,
+            'ddd'     => $splittedPhone['area_code'],
+            'fone'    => $splittedPhone['phone'],
+        ]);
     }
 }

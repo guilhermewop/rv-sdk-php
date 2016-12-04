@@ -9,12 +9,12 @@ use Rv\Exception\FromToProductException;
 final class Product
 {
     private static $operatorProducts = [
-        'oi' = [
+        'oi' => [
             '10.00' => 1488,
             '15.00' => 1927,
             '20.00' => 1018,
         ]
-    ]
+    ];
 
     public static function amountToCode($operator, $amount)
     {
