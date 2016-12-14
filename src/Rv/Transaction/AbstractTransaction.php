@@ -17,7 +17,7 @@ abstract class AbstractTransaction
     const ONLINE_RECHARGE = 5;
 
     /**
-     * Consulta de status da
+     * Consulta de status
      */
     const STATUS_CHECK = 6;
     
