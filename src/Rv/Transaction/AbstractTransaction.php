@@ -17,9 +17,14 @@ abstract class AbstractTransaction
     const ONLINE_RECHARGE = 5;
 
     /**
-     * Consulta de status
+     * Consulta de status da
      */
     const STATUS_CHECK = 6;
+    
+    /**
+     * Confirmação de transação
+     */
+    const TRANSACTION_CONFIRMATION = 7;
 
     /**
      * @var Rv\Transaction
