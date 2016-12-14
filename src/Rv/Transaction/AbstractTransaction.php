@@ -20,6 +20,11 @@ abstract class AbstractTransaction
      * Consulta de status
      */
     const STATUS_CHECK = 6;
+    
+    /**
+     * Confirmação de transação
+     */
+    const TRANSACTION_CONFIRMATION = 7;
 
     /**
      * @var Rv\Transaction
